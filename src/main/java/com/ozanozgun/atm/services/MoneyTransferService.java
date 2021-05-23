@@ -3,6 +3,7 @@ package com.ozanozgun.atm.services;
 import com.ozanozgun.atm.services.request.RequestTransactionMoney;
 import com.ozanozgun.atm.services.response.ResponseTransactionMoney;
 
+
 public class MoneyTransferService {
 
 
@@ -11,9 +12,10 @@ public class MoneyTransferService {
         float accountBalance = depositMoney.getAccountBalance();
         float depositAmount = depositMoney.getTransactionAmount();
         float responseAmount = accountBalance + depositAmount;
+        float roundedResponseAmount = Float.parseFloat((Math.round(responseAmount * 100.0) / 100.0)+"");
 
         ResponseTransactionMoney response = new ResponseTransactionMoney();
-        response.setResponseAmount(responseAmount);
+        response.setResponseAmount(roundedResponseAmount);
         return response;
     }
 
