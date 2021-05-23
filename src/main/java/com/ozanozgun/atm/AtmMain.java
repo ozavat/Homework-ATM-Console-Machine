@@ -17,7 +17,7 @@ public class AtmMain {
 
         BireyselMusteri musteriA = new BireyselMusteri("11111111111", "1", "Ozan Özgün", 8000.75F, "Kadıköy");
         BireyselMusteri musteriB = new BireyselMusteri("2222222222", "2", "Yavuz Çetin", 88888F, "Caddebostan");
-        BireyselMusteri musteriC = new BireyselMusteri("3333333333", "3", "Mırmır Kedibıyık", 456.33F, "Kedi Evi Sokak İstanbul");
+        BireyselMusteri musteriC = new BireyselMusteri("3333333333", "3", "Mırmır Kedibıyık", 456.50F, "Kedi Evi Sokak İstanbul");
         KurumsalMusteri musteriD = new KurumsalMusteri("4444444444", "4", "Mehmet Besthoca", 8888143F, "Testinium");
         KurumsalMusteri musteriE = new KurumsalMusteri("5555555555", "5", "Serhat Yücel", 120.5F, "Ozan Holding");
 
@@ -42,7 +42,7 @@ public class AtmMain {
                 System.out.println(musteri.toString());
             } catch (Exception e) {
                 System.out.println("Müşteri bilgileri alınırken hata oluştu!");
-                System.out.println(e);
+                System.out.println(e.getMessage());
             }
         }
 
@@ -78,7 +78,7 @@ public class AtmMain {
     }
 
     private static String getIdFromConsole(Scanner sc) {
-        String input = null;
+        String input;
         do {
             System.out.println("Lütfen müsteri numarasını doğru bir şekilde giriniz!!");
             System.out.println("Hint; (1,2,3,4,5)");
@@ -88,7 +88,7 @@ public class AtmMain {
     }
 
     private static String getTransactionTypeFromConsole(Scanner sc) {
-        String input = null;
+        String input;
         do {
             System.out.println("Para yatırmak için 1" + '\n' + "Para çekmek için 2" + '\n' + "Yazınız!");
             input = sc.nextLine();
@@ -97,8 +97,8 @@ public class AtmMain {
     }
 
     private static Float getTransactionAmountFromConsole(Scanner sc) {
-        String input = null;
-        Boolean checkInput = false;
+        String input;
+        boolean checkInput = false;
         float floatInput = 0;
 
         do {
@@ -112,9 +112,9 @@ public class AtmMain {
                     checkInput = true;
                 }
             } catch (Exception e) {
-                checkInput = false;
+                System.out.println(e.getMessage());
             }
-        } while (checkInput == false);
+        } while (!checkInput);
         return floatInput;
     }
 }
