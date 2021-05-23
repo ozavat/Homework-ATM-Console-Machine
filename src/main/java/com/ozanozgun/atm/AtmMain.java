@@ -72,7 +72,7 @@ public class AtmMain {
                 System.out.println(responseTransactionMoneyMoney.getErrorMessage());
             } else {
                 musterilerHashMap.get(costumerId).setAccountBalance(responseTransactionMoneyMoney.getResponseAmount());
-                System.out.println("İşleminiz gerçekleştirildi!"+'\n'+ "Yeni hesap bakiyesi: " + musterilerHashMap.get(costumerId).getAccountBalance());
+                System.out.println("İşleminiz gerçekleştirildi!" + '\n' + "Yeni hesap bakiyesi: " + musterilerHashMap.get(costumerId).getAccountBalance());
             }
         }
     }
@@ -106,11 +106,15 @@ public class AtmMain {
             input = sc.nextLine();
             try {
                 floatInput = Float.parseFloat(input);
-                checkInput = true;
+                if (floatInput <= 0) {
+                    System.out.println("İşlem mikatarı sıfır ve sıfırdan küçük olamaz!!");
+                } else {
+                    checkInput = true;
+                }
             } catch (Exception e) {
                 checkInput = false;
             }
-        } while (checkInput == false);  //
+        } while (checkInput == false);
         return floatInput;
     }
 }
